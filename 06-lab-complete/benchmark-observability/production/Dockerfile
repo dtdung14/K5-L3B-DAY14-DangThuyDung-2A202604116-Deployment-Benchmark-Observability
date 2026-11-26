@@ -27,6 +27,9 @@ USER agent
 
 ENV PATH=/home/agent/.local/bin:$PATH
 ENV PYTHONPATH=/app
+# Home của user agent là /app (useradd -d /app) nên Python mặc định tìm package --user ở
+# /app/.local; chỉ cho nó tới đúng chỗ đã COPY ở trên, nếu không sẽ lỗi "No module named uvicorn".
+ENV PYTHONUSERBASE=/home/agent/.local
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
